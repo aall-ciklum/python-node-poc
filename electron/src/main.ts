@@ -37,12 +37,12 @@ function startBackend() {
   const out = fs.openSync(path.join(app.getPath("userData"), "backend-out.log"), "a");
   const err = fs.openSync(path.join(app.getPath("userData"), "backend-err.log"), "a");
 
-  backendProcess = spawn(backendExecutable, [], {
-    cwd: path.dirname(backendExecutable),
-    detached: true,
-    stdio: ["ignore", out, err],
-  });
+  const spawnOptions = {
+    stdio: ["ignore", out, err] as any[], // Type assertion needed for stdio compatibility
+    windowsHide: true,
+  };
 
+  backendProcess = spawn(backendExecutable, [], spawnOptions);
   backendProcess.unref();
 }
 
