@@ -39,7 +39,7 @@ const TodoList = () => {
       setError(null);
     } catch (err) {
       console.error("Error fetching todos:", err);
-      setError("Failed to load todos. Please ensure your API server is running at the correct address.");
+      // setError("Failed to load todos. Please ensure your API server is running at the correct address.");
     } finally {
       setLoading(false);
     }
