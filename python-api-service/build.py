@@ -24,9 +24,16 @@ def build_application():
 
 def copy_built_file():
     """Copy the built executable to the electron project build/python-api folder."""
-    source = os.path.join("dist", "main")
+    # Determine the correct executable extension based on the platform
+    if sys.platform.startswith('win'):
+        built_file = "main.exe" # Windows
+    else:
+        built_file = "main" # Linux, MacOS
+    
+    #Construct the source path and destination path
+    source = os.path.join("dist", built_file)
     destination_dir = os.path.join("..", "electron", "build", "python-api")
-    destination = os.path.join(destination_dir, "main")
+    destination = os.path.join(destination_dir, built_file)
     
     # Create the destination directory if it doesn't exist
     if not os.path.exists(destination_dir):

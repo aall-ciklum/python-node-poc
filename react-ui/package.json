@@ -28,7 +28,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "build:mac": "BUILD_PATH='../electron/build' react-scripts build",
-    "build:win": "SET BUILD_PATH=../electron/build && react-scripts build",
+    "build:win": "react-scripts build && xcopy /E /I /Y \"build\" \"../electron/build\"",
     "build:linux": "BUILD_PATH='../electron/build' react-scripts build"
   },
   "eslintConfig": {
