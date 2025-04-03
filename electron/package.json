@@ -4,18 +4,12 @@
   "description": "Electron wrapper for React UI",
   "main": "dist/main.js",
   "scripts": {
-    "start": "tsc && electron .",
+    "start": "tsc && (cd ./build/python-api && ./main &) && electron .",
     "build": "tsc",
     "watch": "tsc -w",
-    "package:mac": "electron-builder build --mac",
-    "package:win": "electron-builder build --win",
-    "package:linux": "electron-builder build --linux",
-    "package:all": "electron-builder build --win --mac --linux",
-    "make": "npm run build && electron-builder build",
-    "build:mac": "cd ../react-ui && npm run build:electron:mac && cd ../electron && npm run package:mac",
-    "build:win": "cd ../react-ui && npm run build:electron:win && cd ../electron && npm run package:win",
-    "build:linux": "cd ../react-ui && npm run build:electron:linux && cd ../electron && npm run package:linux",
-    "build:all": "cd ../react-ui && npm run build:electron:all && cd ../electron && npm run package:all"
+    "package:mac": "rm -rf dist && npm run build && electron-builder build --mac",
+    "package:win": "rimraf dist && npm run build && electron-builder build --win",
+    "package:linux": "rm -rf dist && npm run build && electron-builder build --linux"
   },
   "author": "",
   "license": "ISC",
@@ -36,7 +30,11 @@
     "files": [
       "dist/**/*",
       "node_modules/**/*",
-      "build/**/*"
+      "build/**/*",
+      "build/python-api/**/*"
+    ],
+    "asarUnpack": [
+      "build/python-api/**"
     ],
     "mac": {
       "category": "public.app-category.utilities"

@@ -27,11 +27,9 @@
     "build": "rm -rf build && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "build:electron": "BUILD_PATH='../electron/build' react-scripts build",
-    "build:electron:mac": "BUILD_PATH='../electron/build' react-scripts build",
-    "build:electron:win": "SET BUILD_PATH=../electron/build && react-scripts build",
-    "build:electron:linux": "BUILD_PATH='../electron/build' react-scripts build",
-    "build:electron:all": "npm run build:electron:mac && npm run build:electron:win && npm run build:electron:linux"
+    "build:mac": "BUILD_PATH='../electron/build' react-scripts build",
+    "build:win": "SET BUILD_PATH=../electron/build && react-scripts build",
+    "build:linux": "BUILD_PATH='../electron/build' react-scripts build"
   },
   "eslintConfig": {
     "extends": [
